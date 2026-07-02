@@ -417,20 +417,6 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .sub-page-footer {
-        justify-content: center;
-        gap: 8px;
-    }
-    .btn-sub-nav {
-        min-width: 0;
-        flex: 1;
-        max-width: 120px;
-        font-size: 11px;
-        padding: 10px 5px;
-    }
-}
-
 /* =================================================
    7. 資格ページ（CERTIFICATIONS）専用スタイル
    ================================================= */
@@ -652,7 +638,7 @@ body {
    ================================================= */
 .toy-skip-btn {
     position: fixed;
-    top: 20px;     
+    top: 20px;
     right: 20px;
     z-index: 80;   
     background-color: #222a31;
@@ -674,15 +660,18 @@ body {
     border-color: var(--toy-green);
     color: var(--toy-green);
     background-color: #2a343d;
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
     box-shadow: 0 6px 0px #0e1215, inset 0 1px 1px rgba(255,255,255,0.08);
 }
 
 .toy-skip-btn:active {
-    transform: translateY(4px); 
+    transform: translateY(4px);
     box-shadow: 0 0px 0px #0e1215; 
 }
 
+/* =================================================
+   11. レスポンシブスタイル（スマートフォン対応）
+   ================================================= */
 @media (max-width: 768px) {
     body {
         overflow: auto;
@@ -695,5 +684,16 @@ body {
         min-height: 90vh;
         padding: 20px;
         padding-top: 50px;
+    }
+    .sub-page-footer {
+        justify-content: center;
+        gap: 8px;
+    }
+    .btn-sub-nav {
+        min-width: 0;
+        flex: 1;
+        max-width: 120px;
+        font-size: 11px;
+        padding: 10px 5px;
     }
 }
