@@ -247,3 +247,34 @@ slots.forEach(slot => {
         }
     });
 });
+
+// 要素の取得
+const skipBtn = document.getElementById('js-skip-btn');
+
+// もしすでにパズルが解けた時の要素やコンテナがあるなら取得する
+// （ここでは例として、全スロットやパズルケースを取得しています）
+const puzzleSlots = document.querySelectorAll('.puzzle-slot');
+const puzzleContainer = document.querySelector('.puzzle-container');
+const piecesContainer = document.querySelector('.pieces-container');
+
+// スキップボタンがクリックされた時の処理
+skipBtn.addEventListener('click', () => {
+  
+  // 1. ボタン自体を非表示にする
+  skipBtn.classList.add('is-hidden');
+  
+  // 2. パズルエリアやピース一覧を非表示にする（必要であれば）
+  if (puzzleContainer) puzzleContainer.style.display = 'none';
+  if (piecesContainer) piecesContainer.style.display = 'none';
+
+  // 3. 【ここが重要】すべてのスロットを一斉にアンロック状態にする
+  // ※現在あなたが「パズルが解けた時」に使っているクラス名に合わせて書き換えてください！
+  puzzleSlots.forEach(slot => {
+    slot.classList.add('is-active'); // もしくは 'unlocked' など
+  });
+
+  // 4. もし「パズルが全部解けたら動く関数」をすでに作っているなら、ここでそれを呼び出すだけでもOK！
+  // 例: unlockAllElements();
+  
+  console.log('Gimmick skipped!');
+});
