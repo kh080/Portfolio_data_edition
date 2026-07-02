@@ -620,43 +620,39 @@ body {
 
 /* =================================================
    10. ギミックスキップ（SKIP BUTTON）専用スタイル
+   （デザインを.menu-pieceと完全に統一）
    ================================================= */
 .toy-skip-btn {
     position: fixed;
     top: 25px;
     right: 45px;
     z-index: 1000;
-    padding: 12px 24px;
-    background-color: var(--toy-green);
-    color: #111111;
+    
+    /* ➔ ここから下を .menu-piece の見た目と完全に同期 */
+    background-color: #222222;
+    border: 1px solid #333;
+    padding: 18px;
+    text-align: center;
+    font-weight: bold;
     font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
     letter-spacing: 0.1em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 5px 0px var(--toy-green-shadow), 0 8px 15px rgba(0, 0, 0, 0.4);
-    transition: all 0.1s ease;
+    cursor: pointer; /* 通常ピースはgrabですがボタンなので手型に */
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 14px;
+    box-shadow: 0 4px 0px #111111, inset 0 1px 1px rgba(255,255,255,0.15);
+    transition: 0.2s;
 }
 
 .toy-skip-btn:hover {
-    background-color: var(--toy-green-hover);
-}
-
-.toy-skip-btn .piece-dot {
-    position: absolute;
-    top: 50%;
-    right: -12px;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    background-color: inherit;
-    border-radius: 50%;
-    box-shadow: 0 5px 0px var(--toy-green-shadow);
+    border-color: var(--toy-green);
+    color: var(--toy-green);
+    background-color: #262626;
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 0px #111111, inset 0 1px 1px rgba(255,255,255,0.2);
 }
 
 .toy-skip-btn:active {
-    transform: translateY(5px);
-    box-shadow: 0 0px 0px var(--toy-green-shadow), 0 3px 5px rgba(0, 0, 0, 0.4);
+    transform: translateY(4px); 
+    box-shadow: 0 0px 0px #111111; 
 }

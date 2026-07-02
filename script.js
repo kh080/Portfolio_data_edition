@@ -27,7 +27,7 @@ hamburger.addEventListener('click', function () {
 const skipBtn = document.getElementById('js-skip-btn');
 if (skipBtn) {
     skipBtn.addEventListener('click', function () {
-        // ★【最重要】スキップボタンが使用されたという証拠（フラグ）を記録
+        // スキップボタンが使用されたフラグを永続記録
         localStorage.setItem('puzzle-skipped', 'true');
 
         // 1. 各通常ピースを一斉にスロットに物理配置（セーブデータも同時作成）
@@ -64,9 +64,15 @@ document.addEventListener('DOMContentLoaded', function () {
         TARGETS.forEach(target => {
             localStorage.removeItem('puzzle-' + target);
         });
-        localStorage.removeItem('puzzle-skipped'); // ★スキップフラグも一緒にリセット
+        localStorage.removeItem('puzzle-skipped'); // スキップフラグも一緒にリセット
         console.log("【システム】パズルをリセットしました。");
         sessionStorage.removeItem('booted');
+    }
+    
+    // ★【追加：戻り値制御】下層ページから戻ってきたときに、すでにスキップ済みならボタンを最初から非表示にする
+    const currentSkipBtn = document.getElementById('js-skip-btn');
+    if (currentSkipBtn && localStorage.getItem('puzzle-skipped') === 'true') {
+        currentSkipBtn.style.display = 'none';
     }
     
     // 【起動演出の制御】セッションフラグを確認してローダーを動かす
@@ -176,7 +182,7 @@ function executePieceSnap(pieceElement, slotElement, slotTarget) {
 
 // 全ピースが埋まったかどうかの判定関数
 function checkAllSolved() {
-    // ★【超重要】もしスキップボタンが過去に一度でも押されていたら、ここで処理を終了（鍵を出さない）
+    // もしスキップボタンが過去に一度でも押されていたら、ここで処理を終了（鍵を出さない）
     if (localStorage.getItem('puzzle-skipped') === 'true') {
         return;
     }
