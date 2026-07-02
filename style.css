@@ -669,16 +669,15 @@ body {
     box-shadow: 0 0px 0px #0e1215; 
 }
 
-/* 画面幅が768px以下（スマホ・タブレット）の時の設定 */
 @media (max-width: 768px) {
     body {
-        overflow: auto; /* スマホだけスクロールを許可 */
+        overflow: auto;
         height: auto;
     }
     .puzzle-case {
-        grid-template-columns: 1fr; /* ➔ 2列から「1列」に変更 */
-        grid-template-rows: repeat(4, 1fr); /* 4行に分割 */
-        height: auto; /* 高さを自動にして縦に伸ばす */
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        height: auto;
         min-height: 90vh;
         padding: 20px;
         padding-top: 50px;
