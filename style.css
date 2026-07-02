@@ -654,8 +654,45 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* スキップした後にボタン自体を消すためのクラス */
-.skip-btn.is-hidden {
+/* スキップボタン全体のスタイル（おもちゃ風グリーン） */
+.toy-skip-btn {
+  position: fixed;
+  top: 25px;
+  right: 40px; /* ポッチが飛び出る分、少し内側に */
+  z-index: 9999;
+  padding: 12px 24px;
+  background-color: #2ec4b6; /* 鮮やかなトイ・グリーン（お好みで調整してね） */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px; /* 少し丸みを持たせておもちゃ感を出す */
+  cursor: pointer;
+  box-shadow: 0 5px 0 #1b9aaa; /* 立体的なおもちゃ風の影 */
+  transition: all 0.1s ease;
+}
+
+/* パズルピースの凸（ポッチ）を右側に表現 */
+.toy-skip-btn .piece-dot {
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: #2ec4b6; /* 本体と同じグリーン */
+  border-radius: 50%;
+  box-shadow: 0 5px 0 #1b9aaa; /* ポッチにも同じ影をつける */
+}
+
+/* ボタンを押したとき（カチッと沈むアニメーション） */
+.toy-skip-btn:active {
+  transform: translateY(5px);
+  box-shadow: 0 0px 0 #1b9aaa;
+}
+
+/* スキップ後に消すためのクラス */
+.toy-skip-btn.is-hidden {
   display: none;
 }
 

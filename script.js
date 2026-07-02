@@ -247,3 +247,43 @@ slots.forEach(slot => {
         }
     });
 });
+
+// 3. スキップボタンの処理
+const skipBtn = document.getElementById('js-skip-btn');
+
+if (skipBtn) {
+  skipBtn.addEventListener('click', () => {
+    // ボタン自体を非表示にする
+    skipBtn.classList.add('is-hidden');
+
+    // 連想配列で「ピースのID」と「はまるべきスロットのdata-slot名」をペアにする
+    const piecePairs = {
+      'piece-about': 'about',
+      'piece-work': 'work',
+      'piece-sikaku': 'sikaku',   // もしHTML側のIDが違ったら直してね！
+      'piece-contact': 'contact'
+    };
+
+    // ペアを1つずつループ処理して、一瞬でバッと埋める
+    Object.keys(piecePairs).forEach(pieceId => {
+      const piece = document.getElementById(pieceId);
+      const slotName = piecePairs[pieceId];
+      const slot = document.querySelector(`.puzzle-slot[data-slot="${slotName}"]`);
+
+      // ピースとスロットが両方見つかったら合体させる
+      if (piece && slot) {
+        // 道具箱からスロットの中に、ピースを物理的に移動（一瞬で埋まる）
+        slot.appendChild(piece);
+
+        // 【一歩手前の状態にする】
+        // あなたの既存のコードで、パズルがはまった時にスロットやピースにつけている
+        // 「スタイルが変わるクラス（例: is-active, unlocked, dropped など）」があれば
+        // ここで一斉に付与して、見た目を「はまった状態」にします。
+        slot.classList.add('is-active'); // ★ここにあなたの使っているクラス名を入れてね
+        piece.classList.add('is-dropped'); // ★必要であればピース側にも
+      }
+    });
+
+    console.log('すべての基本ピースをスロットに埋め込みました（一歩手前の状態）');
+  });
+}
