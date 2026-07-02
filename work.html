@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>WORK | PUZZLE PORTFOLIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="sub-page-body">
+
+    <main class="sub-page-main">
+        <h1 class="sub-page-title">MY WORKS</h1>
+        <p class="sub-page-text">制作したVBAマクロやバッチツールなどの一覧です。自由にダウンロードしてご確認いただけます。</p>
+        
+        <div class="work-box">
+            <h2 style="font-size: 20px; color: #ffffff; margin-top: 0; margin-bottom: 10px;">【Excel VBA】PDF解析集計マクロツール</h2>
+            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">複雑なPDFデータを自動で集計・整理するマクロです。</p>
+            
+            <a href="pdfcount.xlsm" download class="download-btn">Excelファイルをダウンロード</a>
+            
+            <details class="work-details">
+                <summary>Q&A (クリックで展開)</summary>
+                <div class="work-details-content">
+                    <strong style="color: var(--toy-green);">◆［単一フォルダ解析］に関する質問</strong><br>
+                    Q：間違えて、中にさらに複数のフォルダ（子フォルダ）が入っている「親フォルダ」を選択してしまいました。<br>
+                    A： マクロはエラーを起こさずに安全に終了します。<br>
+                    このボタンは選択された最上階の階層にあるPDFだけを狙う仕様のため、子フォルダの中身は無視され、読み込み結果は0件として処理されます。<br><br>
+                    
+                    <strong style="color: var(--toy-green);">◆［サブフォルダ含め解析］に関する質問</strong><br>
+                    Q：サブフォルダを持たない、階層のない「単一フォルダ」を間違えて選択してしまいました。<br>
+                    A： 現在あるシートを削除することなく、末尾に新しいシートを追加して通常通り解析を行います。<br>
+                    フォルダ名が重複している場合は、自動的に「フォルダ名_1」のように連番が付与されます。<br><br>
+                    
+                    Q：PDFファイルが1件も入っていないフォルダを選択した場合はどうなりますか？<br>
+                    A： 無駄なシートが作成されることはありません。<br>
+                    PDFが検出されたフォルダのみをシート化する仕組みになっているため、中身が空のフォルダは自動的にスキップされます。<br><br>
+                    
+                    Q：階層構造（サブフォルダ）のあるフォルダを読み込む際、注意することはありますか？<br>
+                    A： 選択した親フォルダの中にサブフォルダが存在する場合、前回までに作成された追加シートは一度すべてリセット（削除）され、最新の構造で新しく作り直されます。<br>
+                    もし過去のシートを残したままにしたい場合は、別のボタン（複数フォルダ連続解析）をご使用ください。<br><br>
+                    
+                    <strong style="color: var(--toy-green);">◆［複数フォルダ連続解析］に関する質問</strong><br>
+                    Q：何度もフォルダを追加していくと、メインシート（シート1）のデータが上書きされて消えたりしませんか？<br>
+                    A： メインシートのデータと干渉することはありません。<br>
+                    この機能は、選択したフォルダごとに「新しいシート」を右側に作成しながら展開していく仕様のため、メインシートのA〜D列が書き換わる心配はありません。<br><br>
+                    
+                    Q：連続選択の途中で、PDFが入っていないフォルダを選んでしまった場合はどうなりますか？<br>
+                    A： そのフォルダ用のシートは作成されず、自動的にスキップされます。<br>
+                    確認メッセージは通常通り表示されますので、そのまま次のフォルダの選択を続けてください。<br><br>
+                    
+                    <strong style="color: var(--toy-green);">◆共通仕様に関する質問</strong><br>
+                    Q：指定したフォルダの中に、テキスト（.txt）や画像（.png）など、PDF以外のファイルが紛れ込んでいた場合はどうなりますか？<br>
+                    A： PDF以外のファイルはシステムが無視します。<br>
+                    プログラムの内部で、ファイルの拡張子が「.pdf」であるときのみ解析と書き込みを行うフィルターをかけているため、エラーで止まることはありません。<br><br>
+                    
+                    Q：フォルダ選択画面で、間違えてファイル（.pdfなど）を単体で選んでしまうミスは起きませんか？<br>
+                    A： 構造上、絶対に起きないようになっています。<br>
+                    ボタンを押した際に起動する画面は「フォルダ選択専用」に固定されているため、画面上にはフォルダしか表示されず、ファイル単体をクリックすることはできません。<br><br>
+                    
+                    Q：何もファイルが入っていない、完全に空っぽのフォルダを選択した場合はどうなりますか？<br>
+                    A： エラーなどは起きず、安全に終了します。<br>
+                    画面上の古いデータは綺麗にクリアされ、読み込み件数「0件」として処理が完了します。<br><br>
+                    
+                    Q：「資料_1_vol10.pdf」と「資料_1_vol2.pdf」のように、1つのファイル名の中に数字が2箇所以上ある場合でも正しく並びますか？<br>
+                    A： はい、完璧な自然順で並びます。<br>
+                    ファイル名に含まれるすべての数字を後ろから順番に自動検出し、個別にゼロ埋めを施して並び替える「複数数字ソート」を搭載しています。<br>
+                    そのため、複雑なナンバリングのファイルでも意図通りの順番（vol2 ➔ vol10）に整列します。
+                </div>
+            </details>
+        </div>
+        
+        <div class="work-box">
+            <h2 style="font-size: 20px; color: #ffffff; margin-top: 0; margin-bottom: 10px;">【Excel VBA】画像整理マクロツール</h2>
+            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">選択したフォルダ内にある画像を整理するマクロです。</p>
+            <a href="imagecount.xlsm" download class="download-btn">Excelファイルをダウンロード</a>
+        </div>
+        
+        <div class="work-box">
+            <h2 style="font-size: 20px; color: #ffffff; margin-top: 0; margin-bottom: 10px;">【Windowsバッチ】共通単語で自動仕分けバッチツール</h2>
+            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">「_」の前の共通単語を見つけてファイル分けするバッチです。</p>
+            
+            <a href="filesort.bat" download class="download-btn">バッチファイルをダウンロード</a>
+            
+            <p style="color: var(--text-gray); font-size: 13px; margin: 10px 0 0 0; line-height: 1.5;">
+                ※ダウンロードが始まらない場合は、ボタンを「右クリック」して「名前を付けてリンク先を保存」を選択してください。
+            </p>
+        </div>
+        
+        <div class="work-box">
+            <h2 style="font-size: 20px; color: #ffffff; margin-top: 0; margin-bottom: 10px;">【Windowsバッチ】ファイルを100個に複製バッチツール</h2>
+            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">「_1」のファイルを基準に_2~_100まで複製するバッチです。</p>
+            
+            <a href="filecopy100.bat" download class="download-btn">バッチファイルをダウンロード</a>
+            
+            <p style="color: var(--text-gray); font-size: 13px; margin: 10px 0 0 0; line-height: 1.5;">
+                ※ダウンロードが始まらない場合は、ボタンを「右クリック」して「名前を付けてリンク先を保存」を選択してください。
+            </p>
+        </div>
+
+        <a href="index.html" class="btn-back-case">BACK TO CASE</a>
+    </main>
+
+    <div class="crt-overlay"></div>
+</body>
+</html>

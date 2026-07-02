@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>PUZZLE PORTFOLIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="loader-overlay" id="js-loader">
+        <div class="loader-content">
+            <div class="loader-bar-container">
+                <div class="loader-bar" id="js-loader-bar"></div>
+            </div>
+            <div class="loader-status">
+                <span class="loader-text" id="js-loader-text">0%</span>
+                <span class="loader-icon" id="js-loader-icon" style="display: none;">UNLOCKED</span>
+            </div>
+            <div class="loader-guide">PLEASE DRAG & DROP OR CLICK</div>
+        </div>
+    </div>
+
+    <nav class="navigation" id="js-nav">
+        <div class="toy-handle" id="js-hamburger">
+            <div class="handle-grip"></div>
+        </div>
+
+        <div class="drawer-title">PIECES</div>
+        <div class="pieces-container">
+            <div class="menu-piece" id="piece-about" draggable="true">ABOUT ME</div>
+            <div class="menu-piece" id="piece-work" draggable="true">WORK</div>
+            <div class="menu-piece" id="piece-sikaku" draggable="true">QUALIFICATIONS</div>
+            <div class="menu-piece" id="piece-contact" draggable="true">CONTACT</div>
+            <div class="menu-piece" id="piece-key" draggable="true" style="display: none;">SECRET KEY</div>
+        </div>
+    </nav>
+
+    <main class="puzzle-container">
+        <div class="puzzle-case">
+
+            <div class="puzzle-logo">aaaaaa</div>
+
+            <div class="puzzle-slot" data-slot="about"><span>ABOUT ME SLOT</span></div>
+            <div class="puzzle-slot" data-slot="work"><span>WORK SLOT</span></div>
+            <div class="puzzle-slot" data-slot="sikaku"><span>QUALIFICATIONS SLOT</span></div>
+            <div class="puzzle-slot" data-slot="contact"><span>CONTACT SLOT</span></div>
+        </div>
+    </main>
+
+    <div class="crt-overlay"></div>
+
+    <div class="thankyou-overlay" id="js-thankyou-overlay">
+        <h1>Thank You!!</h1>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
