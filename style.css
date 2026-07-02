@@ -109,7 +109,7 @@ body {
     border-left: 5px solid var(--toy-green); 
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     transition: 0.4s ease-out;
-    z-index: 90;
+    z-index: 90; /* ➔ 道具箱のレイヤーは「90」 */
     padding: 40px 30px;
 }
 
@@ -620,26 +620,30 @@ body {
 
 /* =================================================
    10. ギミックスキップ（SKIP BUTTON）専用スタイル
-   （デザインを.menu-pieceと完全に統一）
    ================================================= */
 .toy-skip-btn {
     position: fixed;
-    top: 25px;
-    right: 45px;
-    z-index: 1000;
+    top: 20px;     /* ➔ 枠に被らないよう少し上に調整 */
+    right: 20px;    /* ➔ 枠に被らないよう少し右に寄せました */
     
-    /* ➔ ここから下を .menu-piece の見た目と完全に同期 */
+    /* 🛠️ 【修正点①】 z-indexを「80」に変更
+       道具箱（90）より低い数値にしたため、道具箱を開くと綺麗に下に隠れます */
+    z-index: 80;
+    
+    /* 🛠️ 【修正点②】 サイズの縮小
+       パディングとフォントサイズを小さくし、枠に被らないスマートな大きさに */
+    padding: 10px 16px;
+    font-size: 12px;
+    
     background-color: #222222;
     border: 1px solid #333;
-    padding: 18px;
     text-align: center;
     font-weight: bold;
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.1em;
-    cursor: pointer; /* 通常ピースはgrabですがボタンなので手型に */
+    cursor: pointer;
     border-radius: 6px;
     color: #ffffff;
-    font-size: 14px;
     box-shadow: 0 4px 0px #111111, inset 0 1px 1px rgba(255,255,255,0.15);
     transition: 0.2s;
 }
