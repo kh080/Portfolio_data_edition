@@ -247,34 +247,3 @@ slots.forEach(slot => {
         }
     });
 });
-
-// 3. スキップボタンの処理（安全版：画面を絶対に壊さない）
-const skipBtn = document.getElementById('js-skip-btn');
-
-if (skipBtn) {
-  skipBtn.addEventListener('click', () => {
-    // 1. ボタン自体を非表示にする
-    skipBtn.classList.add('is-hidden');
-
-    // 2. 道具箱の中にあるピースたちを一斉に「見えなく」する
-    // （物理的に移動させず、存在だけを消すのでレイアウトが崩れません）
-    const pieces = document.querySelectorAll('.menu-piece');
-    pieces.forEach(piece => {
-      piece.style.display = 'none'; 
-      // もしCSSで「はまった時の薄暗いスタイル」などがあれば、以下のようにクラス付与でもOK
-      // piece.classList.add('is-dropped');
-    });
-
-    // 3. 下のスロットたちを一斉に「ピースがはまった状態（アンロック一歩手前）」にする
-    const slots = document.querySelectorAll('.puzzle-slot');
-    slots.forEach(slot => {
-      // ★あなたがCSSで「パズルが解けた時・はまった時」用に作っているクラス名に変えてください
-      slot.classList.add('is-active'); 
-      
-      // もしスロットの背景色を変えたり、文字を光らせたりするクラスがあればそれもここに追加できます
-      // slot.classList.add('unlocked');
-    });
-
-    console.log('安全にスキップが完了しました（一歩手前の状態）');
-  });
-}
