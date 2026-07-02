@@ -221,7 +221,6 @@ body {
     box-shadow: 0 0px 0px #111111; 
 }
 
-/* 隠し鍵 */
 #piece-key {
     background-color: var(--toy-yellow); 
     border-color: #D97706;
@@ -235,7 +234,6 @@ body {
     box-shadow: 0 6px 0px #92400E, inset 0 1px 1px rgba(255,255,255,0.4);
 }
 
-/* スロットにはまった後のピース（★ここを削ったのがバグの最大の原因でした！） */
 .puzzle-slot .menu-piece {
     width: 100%;
     height: 100%;
@@ -358,7 +356,7 @@ body {
     text-decoration: none;
     font-family: 'Oswald', sans-serif;
     border: 1px solid var(--toy-green);
-    padding: 10px 20px; /* ★ここを削ったせいで戻るボタンが崩れていました！ */
+    padding: 10px 20px; 
     border-radius: 4px;
     margin-top: 30px;
     transition: 0.2s;
@@ -371,13 +369,11 @@ body {
     color: #111111;
 }
 
-/* 下層ページ内の各コンテンツ自動時間差出現 */
 .cert-category-title, .cert-grid, .sub-page-main > div {
     opacity: 0;
     animation: digitalScanIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
 }
 
-/* デジタル没入モーショングラフィックス */
 @keyframes pageBoot {
     0% { filter: brightness(1.5); }
     100% { filter: brightness(1); }
@@ -620,22 +616,19 @@ body {
 
 /* =================================================
    10. ギミックスキップ（SKIP BUTTON）専用スタイル
-   （★共通化を完全に諦め、通常ピースの全構造を100%安全にコピー独立）
    ================================================= */
 .toy-skip-btn {
     position: fixed;
-    top: 20px;     /* 枠に被らないコンパクト位置 */
+    top: 20px;     
     right: 20px;
-    z-index: 80;   /* 道具箱（90）の下に隠れる */
-    
-    /* ➔ 通常ピース（.menu-piece）と100%同じ値をそのまま独立して記述 */
+    z-index: 80;   
     background-color: #222222;
     border: 1px solid #333;
-    padding: 10px 16px; /* オーダー通り小さく */
+    padding: 10px 16px; 
     text-align: center;
     font-weight: bold;
     font-family: 'Oswald', sans-serif;
-    font-size: 12px;    /* オーダー通り小さく */
+    font-size: 12px;    
     letter-spacing: 0.1em;
     cursor: pointer; 
     border-radius: 6px;
