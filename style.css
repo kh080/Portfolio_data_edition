@@ -417,6 +417,20 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .sub-page-footer {
+        justify-content: center;
+        gap: 8px;
+    }
+    .btn-sub-nav {
+        min-width: 0;
+        flex: 1;
+        max-width: 120px;
+        font-size: 11px;
+        padding: 10px 5px;
+    }
+}
+
 /* =================================================
    7. 資格ページ（CERTIFICATIONS）専用スタイル
    ================================================= */
