@@ -617,3 +617,46 @@ body {
     0% { transform: scale(0.8) translateY(10px); opacity: 0; }
     100% { transform: scale(1) translateY(0); opacity: 1; }
 }
+
+/* =================================================
+   10. ギミックスキップ（SKIP BUTTON）専用スタイル
+   ================================================= */
+.toy-skip-btn {
+    position: fixed;
+    top: 25px;
+    right: 45px;
+    z-index: 1000;
+    padding: 12px 24px;
+    background-color: var(--toy-green);
+    color: #111111;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 5px 0px var(--toy-green-shadow), 0 8px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.1s ease;
+}
+
+.toy-skip-btn:hover {
+    background-color: var(--toy-green-hover);
+}
+
+.toy-skip-btn .piece-dot {
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: inherit;
+    border-radius: 50%;
+    box-shadow: 0 5px 0px var(--toy-green-shadow);
+}
+
+.toy-skip-btn:active {
+    transform: translateY(5px);
+    box-shadow: 0 0px 0px var(--toy-green-shadow), 0 3px 5px rgba(0, 0, 0, 0.4);
+}

@@ -13,7 +13,7 @@ let isDroppedCorrectly = false;
 
 
 /* =================================================
-   2. UIイベント（クリック開閉システム）
+   2. UIイベント（クリック開閉 & スキップシステム）
    ================================================= */
 thankyouOverlay.addEventListener('click', function () {
     this.classList.remove('active');
@@ -23,6 +23,35 @@ hamburger.addEventListener('click', function () {
     nav.classList.toggle('active');
 });
 
+// パズルスキップボタンのイベント処理
+const skipBtn = document.getElementById('js-skip-btn');
+if (skipBtn) {
+    skipBtn.addEventListener('click', function () {
+        // ★【最重要】スキップボタンが使用されたという証拠（フラグ）を記録
+        localStorage.setItem('puzzle-skipped', 'true');
+
+        // 1. 各通常ピースを一斉にスロットに物理配置（セーブデータも同時作成）
+        TARGETS.forEach(target => {
+            const piece = document.getElementById('piece-' + target);
+            const slot = document.querySelector(`[data-slot="${target}"]`);
+            
+            if (piece && slot) {
+                slot.innerHTML = '';          // スロットを空にする
+                slot.appendChild(piece);      // ピースをスロットの中へ格納
+                makePieceClickable(piece, target); // 各ピースをクリック可能（下層リンク化）にする
+                localStorage.setItem('puzzle-' + target, 'solved'); // セーブデータを保存
+            }
+        });
+
+        // 2. スキップ後の画面状態の最終同期
+        if (nav) nav.classList.remove('active'); // 道具箱ドロワーが開いていたら閉じる
+        updateHandleAttention(); // 取っ手の脈動発光（pulse-attention）を消灯させる
+        this.style.display = 'none'; // スキップボタン自身を非表示にする
+
+        console.log("【システム】パズルをスキップしました。シークレットキーは出現しません。");
+    });
+}
+
 
 /* =================================================
    3. ページ初期化（セーブデータ復元 & リセット判定）
@@ -30,11 +59,12 @@ hamburger.addEventListener('click', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const navigationEntries = performance.getEntriesByType('navigation');
     
-    // 【F5リセット】ページが再読み込みされた場合はセーブデータを削除
+    // 【F5リセット】ページが再読み込みされた場合はすべてのデータを削除
     if (navigationEntries.length > 0 && navigationEntries[0].type === 'reload') {
         TARGETS.forEach(target => {
             localStorage.removeItem('puzzle-' + target);
         });
+        localStorage.removeItem('puzzle-skipped'); // ★スキップフラグも一緒にリセット
         console.log("【システム】パズルをリセットしました。");
         sessionStorage.removeItem('booted');
     }
@@ -146,6 +176,11 @@ function executePieceSnap(pieceElement, slotElement, slotTarget) {
 
 // 全ピースが埋まったかどうかの判定関数
 function checkAllSolved() {
+    // ★【超重要】もしスキップボタンが過去に一度でも押されていたら、ここで処理を終了（鍵を出さない）
+    if (localStorage.getItem('puzzle-skipped') === 'true') {
+        return;
+    }
+
     const isAllComplete = TARGETS.every(target => {
         return localStorage.getItem('puzzle-' + target) === 'solved';
     });
