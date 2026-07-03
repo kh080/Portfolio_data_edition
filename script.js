@@ -1,7 +1,7 @@
 /* =================================================
    1. 管理リスト & グローバル変数定義
    ================================================= */
-const TARGETS = ['about', 'work', 'contact', 'sikaku'];
+const TARGETS = ['about', 'work', 'contact', 'certifications'];
 
 const hamburger = document.getElementById('js-hamburger');
 const nav = document.getElementById('js-nav');
