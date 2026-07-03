@@ -13,7 +13,7 @@ let isDroppedCorrectly = false;
 
 
 /* =================================================
-   2. UIイベント（クリック開閉 & スキップシステム）
+   2. UIイベント（クリック開閉 & スキップ）
    ================================================= */
 thankyouOverlay.addEventListener('click', function () {
     this.classList.remove('active');
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* =================================================
-   4. 起動ローディングシステム
+   4. 起動ローディング
    ================================================= */
 function runBootLoader() {
     const loader = document.getElementById('js-loader');
@@ -167,7 +167,7 @@ function executePieceSnap(pieceElement, slotElement, slotTarget) {
     }, 1000);
 }
 
-// 全ピースが埋まったかどうかの判定関数
+// 全ピースが埋まったかどうかの判定
 function checkAllSolved() {
     if (localStorage.getItem('puzzle-skipped') === 'true') {
         return;
@@ -203,7 +203,7 @@ function updateHandleAttention() {
 
 
 /* =================================================
-   6. ピース側の操作イベント
+   6. ピース側の操作
    ================================================= */
 pieces.forEach(piece => {
     piece.addEventListener('dragstart', function (e) {
@@ -243,7 +243,7 @@ pieces.forEach(piece => {
 
 
 /* =================================================
-   7. スロット側のドラッグ＆ドロップイベント
+   7. スロット側のドラッグ＆ドロップ
    ================================================= */
 slots.forEach(slot => {
     slot.addEventListener('dragover', function (e) {
